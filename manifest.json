@@ -1,0 +1,16 @@
+{
+	"name": "Tabbed Tabs",
+	"description": "Keeps new tabs on tab",
+	"version": "0.1",
+	"incognito": "split",
+	"manifest_version": 2,
+	"permissions": [
+	"<all_urls>",
+	"storage",
+	"contextMenus",
+	"activeTab"],
+	"background": {"scripts": ["content.js"]},
+	"browser_action": {
+         "title": "Your Browser Action Name"
+    }
+	}
