@@ -1,0 +1,19 @@
+#unreadLinks{
+	overflow-y: scroll;
+	border: 1px solid black;
+	float:left;
+	height:500px;
+	width:50%;
+}
+#readLinks{
+	overflow-y: scroll;
+	border: 1px solid black;
+	height:500px;
+	
+}
+#wrapper {
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    padding: 10px;
+}
