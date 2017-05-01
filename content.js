@@ -1,21 +1,7 @@
-var s = chrome.extension.getBackgroundPage(); // used for background debugging
-//arrays of links
+$(document).ready(function(){
+
 var unclickedLinks = [];
-var clickedLinks = [];
 
-//add to list
-function addLinkToList(info, linkUrl) {
-  unclickedLinks.push(info.linkUrl);      
-}
+$( "#unreadList" ).append( "<li>"+"link"+"</li>" ); // add all the stuff
 
-//open tabs
-chrome.browserAction.onClicked.addListener(function () {
-    chrome.tabs.create({ url: chrome.runtime.getURL("page.html") });
-});
-
-//context menu customization
-chrome.contextMenus.create({
- title: "Tab this tab!",
- contexts:["link"],  // ContextType
- onclick: addLinkToList // A callback function
 });

@@ -9,8 +9,9 @@
 	"storage",
 	"contextMenus",
 	"activeTab"],
-	"background": {"scripts": ["content.js"]},
+	"background": {"scripts": ["background.js"]},
 	"browser_action": {
          "title": "Your Browser Action Name"
-    }
+    },
+    "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"    
 	}
