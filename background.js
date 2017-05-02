@@ -1,27 +1,33 @@
 var s = chrome.extension.getBackgroundPage(); // used for background debugging
-//arrays of links
-var unclickedLinks = [];
-var clickedLinks = [];
+
+var links = [];
+
+// wipe the context menu so no duplicates
+chrome.contextMenus.removeAll(function() {
+    //context menu customization
+    chrome.contextMenus.create({
+        title: "Tab this tab!",
+        contexts: ["link"], // ContextType
+        onclick: addLinkToList // A callback function
+    });
+});
 
 //add to list
 function addLinkToList(info, linkUrl) {
-  unclickedLinks.push(info.linkUrl);      
+    links.push(info.linkUrl);
 }
 
 //open tabs
-chrome.browserAction.onClicked.addListener(function () {
-    chrome.tabs.create({ url: chrome.runtime.getURL("page.html") });
-    
-    chrome.storage.sync.set({
-    "unreadList":unclickedLinks
-}, function() {
-    console.log("added to list");
-});
-});
+chrome.browserAction.onClicked.addListener(function() {
+	chrome.storage.sync.set({
+        "unreadList": links
+    }, function() {
+        console.log("added to list");
+        links = []; //clear links once sent to storage
+        console.log(links.length);
+    });
+    chrome.tabs.create({
+        url: chrome.runtime.getURL("page.html")
+    });
 
-//context menu customization
-chrome.contextMenus.create({
- title: "Tab this tab!",
- contexts:["link"],  // ContextType
- onclick: addLinkToList // A callback function
-});
+    });
