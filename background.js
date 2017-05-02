@@ -11,7 +11,12 @@ function addLinkToList(info, linkUrl) {
 //open tabs
 chrome.browserAction.onClicked.addListener(function () {
     chrome.tabs.create({ url: chrome.runtime.getURL("page.html") });
-
+    
+    chrome.storage.sync.set({
+    "unreadList":unclickedLinks
+}, function() {
+    console.log("added to list");
+});
 });
 
 //context menu customization
