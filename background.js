@@ -16,7 +16,7 @@ function addLinkToList(info) { //only one parameter needed - the output.
 	var links = [];
 	chrome.storage.sync.get("unreadList",function(object){
 		console.log(object);
-		if(object['unreadList'] == null){
+		if(object['unreadList'] == null){ // i guess this worked....
 			links = [];
 			console.log("fixed the null bug!" +"?");
 			links = [info.linkUrl];
