@@ -19,5 +19,5 @@ function(data) {
 $( "#clearButton" ).click( function( event ) {
       console.log("Data Cleared!");
       unclickedLinks = [];
-      chrome.storage.sync.set({"unreadList": null});
+      chrome.storage.sync.set({"unreadList": []});
 });

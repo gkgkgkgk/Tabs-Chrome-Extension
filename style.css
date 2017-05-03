@@ -1,22 +1,35 @@
+body{
+	margin: 0 auto;
+	width:100%;
+	height: auto;
+}
+
 #unreadLinks{
 	overflow-y: scroll;
 	border: 1px solid black;
 	float:left;
-	height:500px;
+	height:50em;
 	width:50%;
 }
 #readLinks{
 	overflow-y: scroll;
 	border: 1px solid black;
-	height:500px;
-	
+	height:50em;
 }
 #wrapper {
     width: 80%;
     height: 50%;
     margin: auto;
-    padding: 10px;
+    padding: 1em;
+}
+#clearWrapper{
+	text-align:center;	
 }
 #clearButton{
 	text-align:center;	
+	right:50%;
+}
+#horizontalAlign{
+	border: 1em solid green;
+	height:100%;
 }
