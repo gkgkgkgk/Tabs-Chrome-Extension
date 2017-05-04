@@ -14,7 +14,6 @@ chrome.contextMenus.removeAll(function() {
 function addLinkToList(info) { //only one parameter needed - the output. 
 	//.linkUrl is used to access the context URL
 	//.linkUrl is used to access the context Selection Text AKA - Title
-	console.log(info.selectionText);
 	var links = [];
 	chrome.storage.sync.get("unreadList",function(object){
 		console.log(object);
