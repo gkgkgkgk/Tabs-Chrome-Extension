@@ -37,14 +37,13 @@ unclickedLinks = chrome.storage.sync.get({
     }
 );
 
-var clickedLinksFinal;
 var clickedLinks;
 
-clickedLinksFinal = chrome.storage.sync.get("readList",
+clickedLinks = chrome.storage.sync.get("readList",
         function(object) {
         	console.log(object);
         	if (object['readList'] != null) {
-                clickedLinks = readList;
+                clickedLinks = object['readList'];
                 $.each(clickedLinks, function(i, item) {
                     var tempUrl = clickedLinks[i];
                     var title;
@@ -52,7 +51,7 @@ clickedLinksFinal = chrome.storage.sync.get("readList",
                     $.ajax({
                         url: clickedLinks[i],
                         complete: function(readData) {
-                            console.log(data.responseText); //url starts with URL=' and ends wih )'"
+                            console.log(readData.responseText); //url starts with URL=' and ends wih )'"
                             if (readData.responseText.includes("<title>")) {
                                 //console.log(data.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
                                 title = (readData.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
@@ -75,6 +74,9 @@ clickedLinksFinal = chrome.storage.sync.get("readList",
 					
                 });
         	}
+        	else{
+        		clickedLinks = [];
+        		}
             }
         );
 
@@ -120,6 +122,7 @@ clickedLinksFinal = chrome.storage.sync.get("readList",
                 chrome.storage.sync.set({
                     "unreadList": []
                 });
+ 				clickedLinks = [];
                 chrome.storage.sync.set({
                     "readList": []
                 });
