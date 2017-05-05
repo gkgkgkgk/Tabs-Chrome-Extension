@@ -3,6 +3,7 @@
 	width:100%;
 	height: auto;
 	transition: 0.5s;
+
 }
 
 #unreadLinks{
@@ -24,7 +25,7 @@
     padding: 1em;
 }
 #clearWrapper{
-	text-align:center;	
+	text-align:center;
 }
 #clearButton{
 	text-align:center;	
@@ -32,14 +33,38 @@
 	z-index:2;
 	border: none;
 	transition: 0.5s;
+	font-size: 10px;
+	}
+
+#clearButton:focus {
+  outline: none;
+
 }
+
+#clearButton:hover{
+	font-size: 20px;
+ 	border: 1px solid black;
+
+	}​
+
+
 #horizontalAlign{
 	
 	height:100%;
 }
 
-#clearButton:hover ~ #body{
-	background: lightblue;
-}​
+	
+#yes{
+	display:none;
+	border: none;
+	transition: 0.5s;
+	font-size: 20px;
+}
+#no{
+	display:none;
+	border: none;
+	transition: 0.5s;
+	font-size: 20px;
+}
 
 

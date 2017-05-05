@@ -114,18 +114,20 @@ $(document).ajaxStop(function() {
 
 
 $(document).ready(function() {
-	$("#clearButton").on({
-    mouseenter: function () {
-	$("#body").css("background-color","red");
-	$("#clearButton").css("background-color","red");
-    },
-    mouseleave: function () {
-	$("#body").css("background-color","white");
-	$("#clearButton").css("background-color","white");
-    }
-});
+
     $("#clearButton").click(function(event) {
-        console.log("Data Cleared!");
+		$("#yes").css("display","inline-block");
+		$("#no").css("display","inline-block");
+		$("#body").css("background-color","red");
+		$("#clearButton").css("background-color","red");
+		$("#clearButton").css("display","none");
+
+		
+    });
+ $("#yes").click(function(event) {
+	  $("#yes").css("display","none");
+		$("#no").css("display","none"); 
+	console.log("Data Cleared!");
         unclickedLinks = [];
         chrome.storage.sync.set({
             "unreadList": []
@@ -134,6 +136,21 @@ $(document).ready(function() {
         chrome.storage.sync.set({
             "readList": []
         });
-    });
+		$("#body").css("background-color","white");
+		$("#clearButton").css("background-color","white");
+				$("#clearButton").css("display","inline-block");
+				location.reload();
 
+ });
+ 
+  $("#no").click(function(event) {
+	  $("#yes").css("display","none");
+		$("#no").css("display","none"); 
+		$("#body").css("background-color","white");
+		$("#clearButton").css("background-color","white");
+	$("#clearButton").css("display","inline-block");
+
+  });
+ 
+	
 });
