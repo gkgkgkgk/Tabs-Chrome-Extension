@@ -16,7 +16,7 @@ unclickedLinks = chrome.storage.sync.get({
                     if (data.responseText.includes("<title>")) {
                         //console.log(data.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
                         title = (data.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
-                        $("#unreadList").append('<li><a href = "' + unclickedLinks[i] + '" target="_blank" class = "link">' + title + '</a></li>'); // add all the stuff
+                        $("#unreadList").append('<li><a href = "' + unclickedLinks[i] + '" target="_blank" id = "link">' + title + '</a></li>'); // add all the stuff
 
                     } else {
                         $.ajax({
@@ -24,7 +24,7 @@ unclickedLinks = chrome.storage.sync.get({
                             complete: function(data2) {
                                 //console.log(data2.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
                                 title = (data2.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
-                                $("#unreadList").append('<li><a href = "' + unclickedLinks[i] + '" target="_blank" class = "link">' + title + '</a></li>'); // add all the stuff
+                                $("#unreadList").append('<li><a href = "' + unclickedLinks[i] + '" target="_blank" id = "link">' + title + '</a></li>'); // add all the stuff
 
                             }
 
@@ -55,7 +55,7 @@ clickedLinks = chrome.storage.sync.get("readList",
                         if (readData.responseText.includes("<title>")) {
                             //console.log(data.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
                             title = (readData.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
-                            $("#readList").append('<li><a href = "' + clickedLinks[i] + '" target="_blank" class = "link">' + title + '</a></li>'); // add all the stuff
+                            $("#readList").append('<li><a href = "' + clickedLinks[i] + '" target="_blank" id = "link">' + title + '</a></li>'); // add all the stuff
 
                         } else {
                             $.ajax({
@@ -63,7 +63,7 @@ clickedLinks = chrome.storage.sync.get("readList",
                                 complete: function(readData2) {
                                     //console.log(readData2.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
                                     title = (readData2.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
-                                    $("#readList").append('<li><a href = "' + clickedLinks[i] + '" target="_blank" class = "link">' + title + '</a></li>'); // add all the stuff
+                                    $("#readList").append('<li><a href = "' + clickedLinks[i] + '" target="_blank" id = "link">' + title + '</a></li>'); // add all the stuff
 
                                 }
 
@@ -83,7 +83,7 @@ clickedLinks = chrome.storage.sync.get("readList",
 
 $(document).ajaxStop(function() {
 
-    $(".link").click(function(event) {
+    $("#link").click(function(event) {
         //console.log("Link Clicked!"); // ok this works - wasnt working before because the ajax calls were
         //async and doc.ready loaded the event handlers before the links were appended to doc
         var links = [];
@@ -113,15 +113,18 @@ $(document).ajaxStop(function() {
 });
 
 
-$(document).ready(function() {
 
+$(document).ready(function() {
+ 
     $("#clearButton").click(function(event) {
 		$("#yes").css("display","inline-block");
 		$("#no").css("display","inline-block");
 		$("#body").css("background-color","red");
 		$("#clearButton").css("background-color","red");
 		$("#clearButton").css("display","none");
-
+	$('#yes').focus(function() {
+        this.blur();
+    });
 		
     });
  $("#yes").click(function(event) {

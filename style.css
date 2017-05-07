@@ -6,17 +6,22 @@
 
 }
 
+#link{
+	font-size:2em;
+	font-family: 'PT Sans', sans-serif;
+	display: inline-block;
+	margin: 10px 0;
+	}
+
 #unreadLinks{
-	overflow-y: scroll;
-	border: 1px solid black;
 	float:left;
 	height:50em;
-	width:50%;
+	width:49%;
 }
 #readLinks{
-	overflow-y: scroll;
-	border: 1px solid black;
 	height:50em;
+	width:49%;
+	float:right;
 }
 #wrapper {
     width: 80%;
@@ -34,6 +39,10 @@
 	border: none;
 	transition: 0.5s;
 	font-size: 10px;
+	bottom:0;
+	position: absolute;
+	background-color:white;
+
 	}
 
 #clearButton:focus {
@@ -42,8 +51,7 @@
 }
 
 #clearButton:hover{
-	font-size: 20px;
- 	border: 1px solid black;
+	background-color:red;
 
 	}​
 
@@ -59,12 +67,37 @@
 	border: none;
 	transition: 0.5s;
 	font-size: 20px;
+	bottom:0;
+	position: absolute;
+	float:right;
+	right:50%;
+	background:none;
+    border: 2px solid black;
+	font-family: 'PT Sans', sans-serif;
 }
 #no{
 	display:none;
 	border: none;
 	transition: 0.5s;
 	font-size: 20px;
+	bottom:0;
+	left:50%;
+	position: absolute;
+	float:left;
+	background:none;
+    border: 2px solid black;
+	font-family: 'PT Sans', sans-serif;
+}
+#yes:hover {
+  background-color: white;
+  box-shadow: 0 5px black;
+}
+#no:hover {
+  background-color: white;
+  box-shadow: 0 5px black;
 }
 
-
+@font-face {
+	font-family: font1;
+	src: url('cool_font.ttf');
+}
