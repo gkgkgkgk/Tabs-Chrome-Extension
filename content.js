@@ -1,3 +1,11 @@
+//***** VAR FOR CLOSE BUTTON ON READ LINKS****//
+
+var buttonString = `<button 
+	style = "border:none;
+	background-color:white;"
+	id = "removeReadLink"
+	>&#10006;</button>`; //backtick for multiline string
+
 //******GET UNCLICKED LINKS******//
 var unclickedLinks;
 unclickedLinks = chrome.storage.sync.get({
@@ -55,7 +63,7 @@ clickedLinks = chrome.storage.sync.get("readList",
                         if (readData.responseText.includes("<title>")) {
                             //console.log(data.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
                             title = (readData.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
-                            $("#readList").append('<li><a href = "' + clickedLinks[i] + '" target="_blank" id = "link">' + title + '</a></li>'); // add all the stuff
+                            $("#readList").append('<li><a href = "' + clickedLinks[i] + '" target="_blank" id = "link">' + title + '</a>'+buttonString+'</li>'); // add all the stuff
 
                         } else {
                             $.ajax({
@@ -63,7 +71,7 @@ clickedLinks = chrome.storage.sync.get("readList",
                                 complete: function(readData2) {
                                     //console.log(readData2.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
                                     title = (readData2.responseText.match(/<title[^>]*>([^<]+)<\/title>/)[1]);
-                                    $("#readList").append('<li><a href = "' + clickedLinks[i] + '" target="_blank" id = "link">' + title + '</a></li>'); // add all the stuff
+                                    $("#readList").append('<li><a href = "' + clickedLinks[i] + '" target="_blank" id = "link">' + title + '</a>'+buttonString+'</li>'); // add all the stuff
 
                                 }
 
@@ -82,6 +90,10 @@ clickedLinks = chrome.storage.sync.get("readList",
 
 
 $(document).ajaxStop(function() {
+
+	$("#removeReadLink").click(function(event) {
+		console.log("Removed Link");
+	});
 
     $("#link").click(function(event) {
         //console.log("Link Clicked!"); // ok this works - wasnt working before because the ajax calls were
