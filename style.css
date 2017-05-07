@@ -96,8 +96,3 @@
   background-color: white;
   box-shadow: 0 5px black;
 }
-
-@font-face {
-	font-family: font1;
-	src: url('cool_font.ttf');
-}
