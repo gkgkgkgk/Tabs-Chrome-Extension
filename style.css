@@ -1,9 +1,13 @@
+html{
+	overflow: hidden;
+    height: 100%;
+	}
 #body{
 	margin: 0 auto;
 	width:100%;
 	height: auto;
 	transition: 0.5s;
-
+	overflow: auto;
 }
 
 #link{
@@ -17,11 +21,15 @@
 	float:left;
 	height:50em;
 	width:49%;
+	overflow: scroll;
+	direction: rtl;
+
 }
 #readLinks{
 	height:50em;
 	width:49%;
 	float:right;
+	
 }
 #wrapper {
     width: 80%;
